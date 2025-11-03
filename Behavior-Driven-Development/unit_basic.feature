@@ -1,22 +1,33 @@
-Scenario: Add up to capacity
-  Given there are 0 cucumbers
-  And the basket capacity is 10
-  When I add up to 15 cucumbers
-  Then I should have 10 cucumbers in the basket
-  And the basket should be full
+Feature: Cucumbers basket behavior
 
-Scenario: Remove up to available
-  Given there are 4 cucumbers
-  When I remove up to 10 cucumbers
-  Then I should have 0 cucumbers in the basket
-  And the basket should be empty
+  Scenario: Add cucumbers
+    Given there are 12 cucumbers
+    When I add 5 cucumbers to the basket
+    Then I should have 17 cucumbers in the basket
 
-Scenario: Percentage full
-  Given there are 5 cucumbers
-  And the basket capacity is 20
-  Then the basket should be 0.25 full
+  Scenario: Remove cucumbers
+    Given there are 10 cucumbers
+    When I remove 3 cucumbers from the basket
+    Then I should have 7 cucumbers in the basket
 
-Scenario: Clear basket
+Scenario: Clear the basket
   Given there are 7 cucumbers
   When I clear the basket
   Then I should have 0 cucumbers in the basket
+
+Scenario: Basket reports empty
+  Given there are 0 cucumbers
+  Then the basket should be empty
+
+Scenario: Add up to capacity
+  Given there are 8 cucumbers
+  And the basket capacity is 10
+  When I add up to 5 cucumbers
+  Then I should have 10 cucumbers in the basket
+
+Scenario: Remove up to available
+  Given there are 3 cucumbers
+  When I remove up to 10 cucumbers
+  Then I should have 0 cucumbers in the basket
+
+
